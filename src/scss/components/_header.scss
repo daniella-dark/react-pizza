@@ -1,0 +1,48 @@
+@import '../variables';
+
+.header {
+  border-bottom: 1px solid $gray-line;
+  padding: 40px 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 12px;
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    p {
+      color: $gray;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 820px) {
+    padding: 20px 0;
+  }
+
+  @media (max-width: 440px) {
+    h1 {
+      font-size: 18px;
+    }
+  }
+
+  &__leftBlock {
+    display: flex;
+  }
+}

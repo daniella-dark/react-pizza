@@ -1,0 +1,54 @@
+@import '../../scss/variables';
+
+.searchBlock {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+    input {
+        width: 220px;
+        padding: 13px 15px 13px 40px;
+        border: 1px solid $gray-line;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: box-shadow .2s ease-in-out;
+        
+        &::placeholder {
+            opacity: 1;
+            color: #ccc;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 5px rgba(158, 158, 158, 0.25);
+
+            &::placeholder {
+                opacity: 0;
+                transition: .2s linear;
+            }
+        }
+
+        @media (max-width: 820px) {
+            width: 100%;
+        }
+    }
+
+    svg {
+        position: absolute;
+        left: 15px;
+        fill: #ccc;
+    }
+
+    img {
+        position: absolute;
+        right: 15px;
+        width: 15px;
+        height: 15px;
+        opacity: .3;
+        transition: opacity .2s ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

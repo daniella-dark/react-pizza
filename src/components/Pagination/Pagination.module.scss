@@ -1,0 +1,62 @@
+@import '../../scss/variables';
+
+.root {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+
+    li {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 36px;
+        height: 36px;
+        margin-right: 10px;
+        background-color: $gray-line;
+        border-radius: 50%;
+        color: $black;
+        cursor: pointer;
+        transition: background-color .2s ease-in-out;
+
+        &:hover {
+            background-color: darken(#f6f6f6, 10%);
+        }
+        
+        &:active {
+            background-color: darken(#f6f6f6, 20%);
+        }
+
+        a {
+            padding: 8px 14px;
+        }
+    }
+
+    :global {
+        .previous,
+        .next {
+            background-color: #fff;
+            
+            &:hover {
+                background-color: #fff;
+            }
+        }
+        
+        .selected {
+            background-color: $black;
+            font-weight: 800;
+
+            &:hover {
+                background-color: $black;
+            }
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.prev {
+    transform: rotate(-180deg);
+}
+
