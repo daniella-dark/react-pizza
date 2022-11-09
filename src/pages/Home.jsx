@@ -1,5 +1,7 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import axios from 'axios';
+
 import Categories from '../components/Categories'
 import PizzaBlock from '../components/PizzaBlock'
 import Loader from '../components/PizzaBlock/Loader'
@@ -8,15 +10,12 @@ import Pagination from '../components/Pagination';
 import { SearchContext } from '../App';
 
 const Home = () => {
+    const {categoryId, sortType} = useSelector(state => state.filter)
+
     const [pizzas, setPizzas] = React.useState([]);
     const [pizzasCount, setPizzasCount] = React.useState(0)
     const [currentPage, setCurrentPage] = React.useState(1)
     const [isLoading, setIsLoading] = React.useState(true);
-    const [categoryId, setCategoryId] = React.useState(0)
-    const [sortType, setSortType] = React.useState({
-        name: 'сначала популярные',
-        sortProperty: 'rating'
-    })
 
     const itemsLimit = 6
 
@@ -49,14 +48,8 @@ const Home = () => {
     return (
         <div className="container">
             <div className="content__top">
-            <Categories 
-                value={categoryId}
-                onChangeCategory={(index) => setCategoryId(index)}
-            />
-            <Sort 
-                value={sortType}
-                onChangeSort={(obj) => setSortType(obj)}
-            />
+            <Categories />
+            <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
