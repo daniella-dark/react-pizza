@@ -1,10 +1,39 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setActivePage, setSearchValue } from '../../redux/slices/filterSlice'
+import debounce from 'lodash.debounce'
+
 import styles from './Search.module.scss'
 import Close from '../../assets/img/close.svg' 
-import { SearchContext } from '../../App'
 
 const Search = () => {
-  const { searchValue, setSearchValue } = React.useContext(SearchContext)
+  const searchValue = useSelector(state => state.filter.searchValue)
+  const dispatch = useDispatch()
+
+  const [inputValue, setInpulValue] = React.useState('')
+
+  const inputRef = React.useRef()
+
+  const inputClear = () => {
+    return dispatch(setSearchValue(''))
+  }
+    
+  const onClickClear = () => {
+    inputClear()
+    setInpulValue('')
+    inputRef.current.focus()
+  }
+
+  const updateSearchValue = React.useRef(
+    debounce((str) => { // debounce откладывает вызов другой функции до того момента, когда с последнего вызова пройдет заданное количество времени
+      dispatch(setSearchValue(str))
+      dispatch(setActivePage(1))
+    }, 500)).current;
+
+  const onChangeInput = (value) => {
+    setInpulValue(value)
+    updateSearchValue(value)
+  }
 
   return (
     <div className={styles.searchBlock}>
@@ -24,12 +53,13 @@ const Search = () => {
         ></path>
       </svg>
       <input
-        value={searchValue}
-        onChange={e => setSearchValue(e.target.value)}
+        ref={inputRef}
+        value={inputValue}
+        onChange={e => onChangeInput(e.target.value)}
         type="text"
         placeholder='Поиск'
       />
-      {searchValue && <img onClick={() => setSearchValue('')} src={Close} alt="Close" />}
+      {searchValue && <img onClick={onClickClear} src={Close} alt="Close" />}
     </div>
   )
 }

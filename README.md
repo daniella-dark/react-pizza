@@ -12,10 +12,12 @@
 ----------------
 * ReactJS + React Hooks
 * React Router
+* Redux Toolkit
 * Axios
 * SCSS / CSS Modules
 * React Content Loader
-* React Pagination
+* React Paginate
+* Lodash.Debounce
 
 Установка и запуск
 ---------
