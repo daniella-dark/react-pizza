@@ -44,6 +44,7 @@
         cursor: pointer;
         font-size: 14px;
         @include noselect();
+        
         &.active {
           background: #f6f6f6;
           border-radius: 5px;

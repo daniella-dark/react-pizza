@@ -1,0 +1,18 @@
+.root {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    h1 {
+        line-height: 1;
+    }
+
+    p {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    img {
+        border-radius: 20px;
+    }
+}

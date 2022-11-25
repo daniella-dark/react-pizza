@@ -24,15 +24,16 @@
   }
 
   &:hover {
-    background-color: darken($orange, 8%);
+    background-color: lighten($orange, 15%);
   }
 
   &:active {
-    background-color: darken($orange, 12%);
+    background-color: darken($orange, 5%);
     transform: translateY(1px);
   }
 
   &--circle {
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,6 +41,25 @@
     height: 30px;
     min-width: 30px;
     padding: 0;
+
+    &:disabled {
+      opacity: .2;
+
+      svg path {
+        fill: #7b7b7b;
+      }
+
+      &:hover,
+      &:active {
+        transform: none;
+        background-color: transparent;
+        cursor: default;
+        
+          svg path {
+            fill: #7b7b7b;
+          }
+      } 
+    }
   }
 
   &--black {
